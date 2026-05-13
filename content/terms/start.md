@@ -1,0 +1,2 @@
+-   [Terms of Service](terms/terms_of_service)
+-   [Privacy Policy](privacy)

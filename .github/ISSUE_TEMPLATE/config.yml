@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Zotero Forums
+    url: https://forums.zotero.org/
+    about: For help using Zotero or troubleshooting an issue you're encountering, please post in the Zotero Forums. The issue tracker here is for problems with the documentation itself.

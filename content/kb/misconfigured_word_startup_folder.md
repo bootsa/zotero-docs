@@ -1,0 +1,3 @@
+# Why is Zotero telling me that my Word Startup folder is misconfigured?
+
+Zotero automatically installs the Word plugin into Word's Startup folder. If you've previously attempted to install the Word plugin manually, you may have accidentally changed the Startup folder to a location within the Zotero program files, which will prevent the plugin from working. If Zotero is telling you that your Startup folder is misconfigured, see [Locating Your Word Startup Folder](word_processor_plugin_manual_installation#locating_your_word_startup_folder) to learn how to reset the Startup folder to the default location.

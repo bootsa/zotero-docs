@@ -1,0 +1,77 @@
+name: Build
+
+# Runs on every push and pull request as a sanity check that the docs still
+# build. The deploy job runs only on push to main and is gated by the
+# `production` environment, so PRs (including forks) never see deploy
+# secrets and can't reach production.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      # TEMP: `--strict` is off while we clean up legacy broken-link
+      # warnings inherited from the DokuWiki conversion (~80 at last count,
+      # mostly stale anchors). Re-enable once those are at 0 so any new
+      # broken in-corpus link fails the build.
+      - run: mkdocs build
+
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          name: docs-build
+          path: build/
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      id-token: write   # OIDC token for AWS role assumption
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: docs-build
+          path: build/
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE }}
+          aws-region: us-east-1
+
+      - name: Package and upload to S3
+        run: |
+          set -euo pipefail
+          ZIP="docs-${GITHUB_SHA}.zip"
+          (cd build && zip -qr "../$ZIP" .)
+          aws s3 cp "$ZIP" "s3://${{ secrets.ARTIFACTS_BUCKET }}/docs/$ZIP"
+
+      - name: Notify deployment host
+        run: |
+          set -euo pipefail
+          BODY=$(jq -nc \
+            --arg sha "$GITHUB_SHA" \
+            --arg key "docs/docs-${GITHUB_SHA}.zip" \
+            '{sha:$sha, key:$key}')
+          SIG=$(printf '%s' "$BODY" \
+            | openssl dgst -sha256 -hmac "${{ secrets.WEBHOOK_HMAC }}" \
+            | awk '{print $2}')
+          curl -fsS --max-time 30 -X POST "${{ secrets.DEPLOY_WEBHOOK_URL }}" \
+               -H 'Content-Type: application/json' \
+               -H "X-Signature: sha256=$SIG" \
+               --data "$BODY"

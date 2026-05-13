@@ -1,0 +1,110 @@
+site_name: Zotero Documentation
+site_url: https://www.zotero.org/support/
+docs_dir: content
+site_dir: build
+
+# Phase 1 of link validation: warn (not strict) on broken in-corpus references
+# and missing anchors. Once the existing broken links are cleaned up, the CI
+# can flip to `mkdocs build --strict` and these become hard errors.
+# `/`-prefixed links pass through as external (e.g. /download/, /blog/...).
+validation:
+  links:
+    not_found: warn
+    absolute_links: ignore
+    anchors: warn
+
+theme:
+  name: null
+  custom_dir: theme
+
+# Suppress the JS/CSS that MkDocs injects by default — the wrapping site
+# chrome supplies its own.
+extra_css: []
+extra_javascript: []
+
+# Use directory URLs (i.e., /support/quick_start_guide/, served by index.html)
+# so links survive the move from Dokuwiki without trailing extensions.
+use_directory_urls: true
+
+hooks:
+  - hooks.py
+
+# Curated sidebar. Mirrors start.md's organization but trimmed of pages that
+# don't belong in a navigation menu (footer/policy pages, link-only stubs like
+# zotero_support, individual screencasts, etc.). Pages not listed here are
+# still built and searchable — they're just not in the sidebar.
+nav:
+  - Home: start.md
+
+  - Getting Started:
+      - Installation: installation.md
+      - Quick Start Guide: quick_start_guide.md
+      - System Requirements: system_requirements.md
+      - Frequently Asked Questions: frequently_asked_questions.md
+      - Version History: changelog.md
+
+  - Adding to Your Library:
+      - Adding Items: adding_items_to_zotero.md
+      - Adding Files: attaching_files.md
+      - Feeds: feeds.md
+      - Retrieve PDF Metadata: retrieve_pdf_metadata.md
+      - Importing from Other Tools: moving_to_zotero.md
+
+  - Organizing & Taking Notes:
+      - Collections and Tags: collections_and_tags.md
+      - Searching: searching.md
+      - Sorting: sorting.md
+      - PDF Reader: pdf_reader.md
+      - Notes: notes.md
+      - Related Items: related.md
+      - Duplicate Detection: duplicate_detection.md
+
+  - Citations & Bibliographies:
+      - Creating Bibliographies: creating_bibliographies.md
+      - Word Processor Integration: word_processor_integration.md
+      - Citation Styles: styles.md
+      - Reports: reports.md
+
+  - Syncing & Collaboration:
+      - Data and File Syncing: sync.md
+      - Groups: groups.md
+      - My Publications: my_publications.md
+
+  - Preferences:
+      - Preferences: preferences.md
+      - Connector Preferences: connector_preferences.md
+      - Languages: supported_languages.md
+
+  - Knowledge Base: kb.md
+
+  - Troubleshooting:
+      - Getting Help: getting_help.md
+      - Library Data Issues: zotero_data.md
+      - Web Saving Issues: troubleshooting_translator_issues.md
+      - Word Processor Plugin Issues: word_processor_plugin_troubleshooting.md
+      - Data Sync Issues: kb/changes_not_syncing.md
+      - File Sync Issues: kb/files_not_syncing.md
+      - File Handling Issues: kb/file_handling_issues.md
+
+  - Developers: dev/start.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - fenced_code
+  - attr_list
+  - md_in_html
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: '#'
+      # Use underscores in heading IDs to match Dokuwiki convention, so
+      # existing in-page anchor links (e.g. `#saving_webpages`) still work.
+      separator: '_'
+  # Build-time typography: straight quotes → curly, ... → ellipsis. Smart
+  # dashes are disabled because pandoc emitted some prose em-dashes as plain
+  # `--`, which smarty would turn into en-dashes (the wrong direction).
+  - smarty:
+      smart_dashes: false
+      smart_quotes: true
+      smart_ellipses: true

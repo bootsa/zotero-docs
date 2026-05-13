@@ -1,0 +1,23 @@
+# Zotero Client Coding
+
+-   [Source Code](dev/source_code)
+    -   Learn where you find the Zotero source code, how to use the issue tracker, and how to contribute code.
+-   [Building Zotero](dev/client_coding/building_the_desktop_app)
+    -   Learn how to build the Zotero client from scratch.
+-   [Coding Guidelines](dev/client_coding/coding_guidelines)
+    -   When you write code for the Zotero project, there are some naming and formatting preferences we ask you to follow.
+-   Client APIs and technical details
+    -   [JavaScript API](dev/client_coding/javascript_api)
+        -   The Zotero client's internal API
+    -   [Direct SQLite Database Access](dev/client_coding/direct_sqlite_database_access)
+        -   The Zotero client stores most of its data in a SQLite database. Here you will find some details on accessing this database.
+    -   [Connector HTTP Server](dev/client_coding/connector_http_server)
+        -   The Zotero Connector for Chrome, Firefox, and Safari talk to the HTTP server in the Zotero client.
+    -   Word Processor Integration API
+        -   Zotero word processor plugins are components implementing a small set of interfaces. Development guidelines for these interfaces are described for [LibreOffice](https://github.com/zotero/zotero-libreoffice-integration/), [Word for Windows](https://github.com/zotero/zotero-word-for-windows-integration), and [Word for Mac](https://github.com/zotero/zotero-word-for-mac-integration).
+    -   [HTTP Citing Protocol](dev/client_coding/http_integration_protocol)
+        -   The Google Docs plugin implements the HTTP citing protocol, by performing a sequence of HTTP requests in a transaction. This is the preferred way to provide citing integration with Zotero for document processors.
+    -   [LibreOffice Plugin Wire Protocol](dev/client_coding/libreoffice_plugin_wire_protocol)
+        -   The LibreOffice plugin implements the word processor integration API by acting as a server for a simple TCP/IP protocol. If out-of-process communication mechanisms such as COM and AppleScript as well as HTTP messaging protocol is not available, the TCP/IP protocol can be used instead.
+-   [Zotero Plugin Development](dev/client_coding/plugin_development)
+    -   Learn how to extend the Zotero client with a plugin.

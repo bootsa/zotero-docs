@@ -1,0 +1,11 @@
+# Can I store my Zotero data directory in a cloud storage folder?
+
+No. Storing your [Zotero data directory](zotero_data) in a cloud storage folder (Dropbox, Google Drive, OneDrive, etc) is extremely likely to corrupt your database or break Zotero in unexpected ways, and it shouldn't be done. The same applies to essentially any database-backed program.
+
+Database-backed programs like Zotero rely on file locking to ensure file integrity, but cloud storage systems generally don't honor such locks. If you wake up your computer with Zotero running, and then your cloud storage tool pulls down a change from another linked computer and updates part of the database file, Zotero will be unaware of the change and will corrupt the database when it next writes to the file. Even if a cloud storage tool did honor file locks, you would simply end up with two conflicted copies that were impossible to merge, and those conflicted copies would quickly proliferate in the Zotero data directory.
+
+The Zotero Forums contain countless reports over many years of database corruption or unexpected errors resulting from the use of cloud storage folders. Sometimes people are able to restore from a backup or recover by using the [Zotero Database Repair Tool](utils/dbfix), but other people lose some or all of their Zotero data. Don't be one of those people.
+
+The easiest and safest way to access Zotero data across multiple computers is to keep your data directory in the default location and use [Zotero Sync](sync). For ways to safely use external cloud storage without jeopardizing your data, see [Alternative Syncing Solutions](sync#alternative_syncing_solutions).
+
+(Technically, there is one exception to the above: if you only ever use Zotero on one computer and never even set up another instance of Zotero to point to the same cloud storage folder, storing your data directory in cloud storage should be relatively safe. However, people regularly encounter odd problems resulting from cloud storage folders not behaving like normal filesystem folders, and we're not able to provide any support for such problems. And, of course, if you ever accidentally point another copy of Zotero at the same cloud storage folder in the future, you're likely to corrupt the database at that time.)

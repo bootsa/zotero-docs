@@ -1,0 +1,15 @@
+# How Zotero Support Works
+
+We know people use Zotero for critical, time-sensitive projects, and we work hard to provide fast, expert help, no matter the time of day or day of the week. Support for Zotero works a bit differently than you might be used to, and we're incredibly proud of it — we think we're able to provide a support experience that surpasses what you'll get for nearly any other piece of software. It's one of the best reasons to rely on Zotero for your research.
+
+All Zotero support is provided in public through the [Zotero Forums](/forum). Unlike with many other software forums, where users are often left to fend for themselves, Zotero developers read every forum thread, and you'll frequently find yourself talking within hours or minutes with the person who wrote the specific part of the software you have a question about. There's no wasting time explaining your problem to a chatbot or a customer support representative following a script. You'll never need to escalate your report to a faceless engineering department, or wait for the right person to provide follow-up questions to pass back to you. The Zotero team is made up of conscientious people who care deeply about people's experiences using the tools they build, and they'll work one-on-one with you to resolve your issue.
+
+In addition to the core Zotero developers, you'll find a dedicated, expert community, with deep knowledge of Zotero and many related subjects: citation styles, metadata standards, Zotero plugins, workflows, etc. Community members can answer a wide range of questions, including many that Zotero developers themselves can't answer. They can also get you assistance faster by pointing you to relevant previous posts, making sure you've provided enough information for a developer to be able to help you if necessary, translating troubleshooting information into other languages, or suggesting an immediate workaround until your issue is fully resolved.
+
+Beyond technical support, the forums allow the entire community — Zotero developers and users alike — to help shape Zotero's future. Many of Zotero's features began with discussions in the forums, and many changes are the direct result of feedback from users there, so we strongly encourage you to get involved.
+
+Note: While the public nature of the forums are a critical part of what makes them so effective, if you don't want to post under your own name, you can choose a different username for the forums from your [account settings](/settings/profile). You'll also never need to post any private information: if we need any private information to solve your problem, we'll ask you to send that via email with a link to the relevant forum thread.
+
+If you decide you still need in-person help, most university libraries offer Zotero instruction and support, or it might be enough to ask a technically inclined friend or colleague to read through the [detailed documentation](start) we provide on many topics.
+
+<p style="font-size: 16px; margin-top: 1.4em; font-weight: bold"><a href="https://forums.zotero.org">Go to the Zotero Forums</a></p>

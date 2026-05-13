@@ -1,0 +1,1 @@
+See <https://github.com/citation-style-language/styles/wiki/Submitting-Styles> for information on how to submit CSL styles for inclusion in the [Zotero Style Repository](http://www.zotero.org/styles).
