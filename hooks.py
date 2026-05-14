@@ -15,8 +15,10 @@ Topic spec grammar:
   - &option             : display option (ignored)
 """
 
+import json
 import posixpath
 import re
+import subprocess
 import urllib.parse
 from pathlib import Path
 
@@ -40,6 +42,61 @@ INTERNAL_LINK_RE = re.compile(
 _tag_index: dict = {}
 _valid_urls: set = set()
 _page_anchors: dict = {}  # url (no trailing slash) -> set of anchor ids
+_last_modified: dict = {}  # repo-relative path -> ISO date string
+
+
+def _build_last_modified(repo_root):
+    """Build the last-modified date for every tracked file by walking
+    `git log` once. Files whose newest commit is the initial commit fall
+    back to the legacy DokuWiki dates from `dokuwiki_dates.json`, so the
+    site shows real edit dates for the pre-migration history.
+
+    Requires the full git history — in CI, make sure actions/checkout
+    uses `fetch-depth: 0`."""
+    if _last_modified:
+        return
+    try:
+        initial = subprocess.run(
+            ['git', '-C', str(repo_root), 'rev-list', '--max-parents=0', 'HEAD'],
+            capture_output=True, text=True, check=True,
+        ).stdout.strip().split('\n')[0] or None
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        initial = None
+
+    try:
+        proc = subprocess.run(
+            ['git', '-C', str(repo_root), 'log',
+             '--name-only', '--format=COMMIT %H %cs'],
+            capture_output=True, text=True, check=True,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return
+
+    # First sighting of each file in the reverse-chronological log == newest
+    seen = {}  # repo-relative path -> (sha, iso-date)
+    cur_sha = None
+    cur_date = None
+    for line in proc.stdout.splitlines():
+        if line.startswith('COMMIT '):
+            rest = line[len('COMMIT '):]
+            cur_sha, _, cur_date = rest.partition(' ')
+        elif line and cur_sha and cur_date and line not in seen:
+            seen[line] = (cur_sha, cur_date)
+
+    # DokuWiki fallback map: { "kb/foo": "YYYY-MM-DD", ... }
+    dw_path = repo_root / 'dokuwiki_dates.json'
+    try:
+        dw_dates = json.loads(dw_path.read_text()) if dw_path.is_file() else {}
+    except (json.JSONDecodeError, OSError):
+        dw_dates = {}
+
+    for f, (sha, date) in seen.items():
+        if sha == initial and f.startswith('content/') and f.endswith('.md'):
+            key = f[len('content/'):-len('.md')]
+            if key in dw_dates:
+                _last_modified[f] = dw_dates[key]
+                continue
+        _last_modified[f] = date
 
 
 def _extract_anchors(body):
@@ -289,6 +346,14 @@ def on_page_markdown(markdown, page, config, files):
         parts = slug.split('/')
         base = parts[-2] if len(parts) > 1 and parts[-1] == 'start' else parts[-1]
         body = body[:fm_end] + '# ' + _slug_to_title(base) + '\n\n' + body[fm_end:]
+
+    # Last-modified date from git, for the page footer. Cheap once cached.
+    docs_dir = config['docs_dir']
+    repo_root = Path(docs_dir).resolve().parent
+    _build_last_modified(repo_root)
+    repo_rel = posixpath.join(Path(docs_dir).name, page.file.src_path)
+    if repo_rel in _last_modified:
+        page.meta['last_modified'] = _last_modified[repo_rel]
 
     # Expand topic macros first — they produce internal `[title](kb/foo)`
     # links, which the link-resolution pass below turns into proper relative
