@@ -67,5 +67,5 @@ The page will show up automatically under any KB index page whose
 
 ## Deploy timing
 
-Merging a PR doesn't update the live site instantly — there's a short delay
-while CI rebuilds and the new content is pushed out.
+Merging a PR doesn't update the live site instantly — there's about a
+minute delay while CI rebuilds and the new content is pushed out.

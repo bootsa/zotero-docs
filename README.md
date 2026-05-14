@@ -6,8 +6,8 @@ The site is built with [MkDocs](https://www.mkdocs.org/) using a custom theme.
 Local previews render with a minimal theme; the live site is served inside
 the standard zotero.org page chrome.
 
-Merged changes will be automatically deployed to the live site within a few
-minutes.
+Merged changes will be automatically deployed to the live site in about a
+minute.
 
 ## Repository layout
 
