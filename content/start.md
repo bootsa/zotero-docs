@@ -1,3 +1,5 @@
+# Zotero Documentation
+
 ### Quick Links
 
 -   [Installation](installation)
