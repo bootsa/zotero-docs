@@ -445,6 +445,33 @@
     margin: 0 0 0.5em;
     padding-left: 0.4em;
   }
+  .zotero-docs-page-meta {
+    margin-top: 1.5em;
+    padding: 1.2em 0.4em 0;
+    border-top: 1px solid #eee;
+    font-size: 0.85em;
+    color: #555;
+  }
+  /* No TOC above? The meta block is the only child of the aside and
+     doesn't need its separator line / top padding. */
+  .zotero-docs-page-meta:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+  .zotero-docs-modified {
+    margin-bottom: 0.6em;
+  }
+  .zotero-docs-edit {
+    display: inline-flex;
+    align-items: center;
+    color: #555;
+    text-decoration: none;
+  }
+  .zotero-docs-edit svg {
+    margin-right: 0.6em;
+  }
+  .zotero-docs-edit:hover { color: #000; }
   .zotero-docs-toc ul {
     list-style: none;
     padding: 0;
@@ -470,7 +497,9 @@
   .zotero-docs-toc a:hover {
     color: #000;
   }
-  .zotero-docs-toc a:hover::before {
+  /* Scope to TOC entries (inside the ul) only — the Edit-on-GitHub link
+     is a sibling anchor in the same aside but shouldn't get the bar. */
+  .zotero-docs-toc ul a:hover::before {
     content: '';
     position: absolute;
     top: 0;
@@ -715,19 +744,32 @@ document.addEventListener('DOMContentLoaded', function() {
   </nav>
   <article class="zotero-docs-content">
     {{ page.content }}
-    {% if page.edit_url %}
-      <p class="zotero-docs-edit"><a href="{{ page.edit_url }}">Edit this page on GitHub</a></p>
-    {% endif %}
   </article>
-  {# Hide the TOC if the page has only a single heading — the entry would
-     just point back to the page title, which isn't useful. #}
+  {# Right-column rail: page TOC (hidden if the page has only a single
+     heading, since the entry would just point back to the page title) and
+     the Edit-on-GitHub link below it. #}
   {% set toc_list = page.toc|list %}
-  {% if toc_list|length > 1 or (toc_list and toc_list[0].children) %}
-    <aside class="zotero-docs-toc" aria-label="On this page">
+  {% set has_toc = toc_list|length > 1 or (toc_list and toc_list[0].children) %}
+  {% if page.edit_url or has_toc %}
+    <aside class="zotero-docs-toc">
+      {% if has_toc %}
       <div class="zotero-docs-toc-title">On this page</div>
       <ul>
         {% for item in page.toc %}{{ toc_item(item) }}{% endfor %}
       </ul>
+      {% endif %}
+      {% if page.edit_url or page.meta.last_modified %}
+      <div class="zotero-docs-page-meta">
+        {% if page.meta.last_modified %}
+          <div class="zotero-docs-modified">Last updated {{ page.meta.last_modified }}</div>
+        {% endif %}
+        {% if page.edit_url %}
+          <a class="zotero-docs-edit" href="{{ page.edit_url }}">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064L11.189 6.25Zm2.95-2.12-1.086-1.086a.25.25 0 0 0-.354 0l-1.012 1.012 1.44 1.44 1.012-1.013a.25.25 0 0 0 0-.353Z"/></svg>Edit on GitHub
+          </a>
+        {% endif %}
+      </div>
+      {% endif %}
     </aside>
   {% endif %}
 </div>

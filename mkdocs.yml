@@ -1,5 +1,7 @@
 site_name: Zotero Documentation
 site_url: https://www.zotero.org/support/
+repo_url: https://github.com/zotero/zotero-docs
+edit_uri: edit/main/content/
 docs_dir: content
 site_dir: build
 
