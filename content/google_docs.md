@@ -130,7 +130,7 @@ You can also add page numbers from the keyboard as you insert citations. Search 
 
 The "Prefix" and "Suffix" text boxes allow you to specify text to respectively precede and follow the automatically generated cite. For example, instead of "Tribe 1999", you might want "cf. Tribe 1999, see also…".
 
-Any text in the prefix and suffix fields can be formatted with the HTML tags <i> (for italics), <b> (bold), <sub> (subscript), and <sup> (superscript). For example, typing "<i>cf</i>. the classic example" will be displayed as "*cf*. the classic example".
+Any text in the prefix and suffix fields can be formatted with the HTML tags `<i>` (for italics), `<b>` (bold), `<sub>` (subscript), and `<sup>` (superscript). For example, typing "`<i>`cf`</i>`. the classic example" will be displayed as "*cf*. the classic example".
 
 Prefixes and suffixes can be applied to each item in a citation to create complex citations. For example: "(see Smith 1776 for the classic example; Marx 1867 presents and alternate view)". Modifying citations by entering text into the Prefix and Suffix fields is always preferable to directly typing in the citation fields in the document. Manual modifications will prevent Zotero from automatically updating the citation.
 

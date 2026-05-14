@@ -29,7 +29,7 @@ You can add other locators, such as chapter, paragraph, verse, etc. by selecting
 
 The “Prefix” and “Suffix” fields in the lower-left corner of the Classic View citation window allow you to specify text to respectively precede and follow the automatically generated cite. For example, instead of “Tribe 1999”, you might want “cf. Tribe 1999, see also…”.
 
-Any text in the prefix and suffix fields can be formatted with the HTML tags <i> (for italics), <b> (bold), <sub> (subscript), and <sup> (superscript). For example, typing ”<i>cf</i>. the classic example“ will be displayed as ”cf. the classic example“.
+Any text in the prefix and suffix fields can be formatted with the HTML tags `<i>` (for italics), `<b>` (bold), `<sub>` (subscript), and `<sup>` (superscript). For example, typing ”`<i>`cf`</i>`. the classic example“ will be displayed as ”cf. the classic example“.
 
 Modifying citations by entering text into the Prefix and Suffix fields is always preferable to directly typing in the citation fields in your document or using the "Show Editor" button (see below). Manual modifications will prevent Zotero from automatically updating the citation.
 

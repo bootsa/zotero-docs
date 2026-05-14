@@ -13,32 +13,30 @@ These are instructions for using the Zotero Word Plugin. For plugins for LibreOf
 The Zotero tab contains these icons:
 
 <table>
-<thead>
-<tr class="header">
-<th>Add/Edit Citation</th>
-<th>![zotero-toolbar-word-add-edit-citation-5.png](/_media/word_integration/zotero-toolbar-word-add-edit-citation-5.png)</th>
-<th>Add a new citation or edit an existing citation in your document at the cursor location.</th>
-</tr>
-</thead>
 <tbody>
+<tr class="header">
+<td>Add/Edit Citation</td>
+<td><img alt="zotero-toolbar-word-add-edit-citation-5.png" src="/_media/word_integration/zotero-toolbar-word-add-edit-citation-5.png"></td>
+<td>Add a new citation or edit an existing citation in your document at the cursor location.</td>
+</tr>
 <tr class="odd">
 <td>Add/Edit Bibliography</td>
-<td>![zotero-toolbar-word-add-edit-bibliography-5.png](/_media/word_integration/zotero-toolbar-word-add-edit-bibliography-5.png)</td>
+<td><img alt="zotero-toolbar-word-add-edit-bibliography-5.png" src="/_media/word_integration/zotero-toolbar-word-add-edit-bibliography-5.png"></td>
 <td>Insert a bibliography at the cursor location or edit an existing bibliography.</td>
 </tr>
 <tr class="even">
 <td>Document Preferences</td>
-<td>![zotero-toolbar-word-doc-prefs-5.png](/_media/word_integration/zotero-toolbar-word-doc-prefs-5.png){ width=16 }</td>
+<td><img alt="zotero-toolbar-word-doc-prefs-5.png" src="/_media/word_integration/zotero-toolbar-word-doc-prefs-5.png" width="16"></td>
 <td>Open the Document Preferences window, e.g. to change the citation style.</td>
 </tr>
 <tr class="odd">
 <td>Refresh</td>
-<td>![zotero-toolbar-word-refresh-5.png](/_media/word_integration/zotero-toolbar-word-refresh-5.png){ width=16 }</td>
+<td><img alt="zotero-toolbar-word-refresh-5.png" src="/_media/word_integration/zotero-toolbar-word-refresh-5.png" width="16"></td>
 <td>Refresh all citations and the bibliography, updating any item metadata that has changed in your Zotero library.</td>
 </tr>
 <tr class="even">
 <td>Unlink Citations</td>
-<td>![zotero-toolbar-word-unlink-citations-5.png](/_media/word_integration/zotero-toolbar-word-unlink-citations-5.png){ width=18 }</td>
+<td><img alt="zotero-toolbar-word-unlink-citations-5.png" src="/_media/word_integration/zotero-toolbar-word-unlink-citations-5.png" width="18"></td>
 <td>Unlink Zotero citations in the document by removing the field codes. This prevents any further automatic updates of the citations and bibliographies.<br />
 Note that removing field codes is <strong>irreversible</strong>, and should usually only be done in a final copy of your document.</td>
 </tr>
@@ -110,7 +108,7 @@ You can also add page numbers from the keyboard as you insert citations. Search 
 
 The "Prefix" and "Suffix" text boxes allow you to specify text to respectively precede and follow the automatically generated cite. For example, instead of "Tribe 1999", you might want "cf. Tribe 1999, see also…".
 
-Any text in the prefix and suffix fields can be formatted with the HTML tags <i> (for italics), <b> (bold), <sub> (subscript), and <sup> (superscript). For example, typing "<i>cf</i>. the classic example" will be displayed as "*cf*. the classic example".
+Any text in the prefix and suffix fields can be formatted with the HTML tags `<i>` (for italics), `<b>` (bold), `<sub>` (subscript), and `<sup>` (superscript). For example, typing "`<i>`cf`</i>`. the classic example" will be displayed as "*cf*. the classic example".
 
 Prefixes and suffixes can be applied to each item in a citation to create complex citations. For example: "(see Smith 1776 for the classic example; Marx 1867 presents and alternate view)". Modifying citations by entering text into the Prefix and Suffix fields is always preferable to directly typing in the citation fields in Word. Manual modifications will prevent Zotero from automatically updating the citation.
 
