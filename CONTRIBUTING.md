@@ -29,8 +29,9 @@ For consistency and the highest image quality, new screenshots should be
 generated on macOS on a Retina display if possible.
 
 - **New images** go under `content/images/`, organized by topic (e.g.
-  `content/images/searching/advanced_search.png`). Reference them with an
-  absolute docs-root path in markdown: `![Advanced Search](/images/searching/advanced_search.png)`.
+  `content/images/searching/advanced_search.png`). Reference them with a
+  leading slash so the path is resolved from the docs root: `![Advanced
+  Search](/images/searching/advanced_search.png)`.
 - **Legacy DokuWiki images** carried over from the original wiki live under
   `content/_media/`, preserving the original namespace layout (e.g.
   `content/_media/quick_start/zotero_pane.png`). These keep the existing
