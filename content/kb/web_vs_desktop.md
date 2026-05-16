@@ -20,7 +20,6 @@ A desktop app allows for vastly more functionality than a website. Here's an inc
 -   More comprehensive export output with options to include files and notes in some formats
 -   Real windows that you can interact with via Cmd-Tab/Alt-Tab, resize, etc. — not just an interface within a single browser tab
 -   Local filesystem access — e.g., adding PDFs directly from your documents or creating links to files on the local disk
--   Automatic retrieval of metadata for PDFs (coming soon to web library)
 -   Find Available PDF to locate open-access versions of files
 -   Importing of references from other reference managers
 -   PDF full-text indexing (coming soon to web library)
