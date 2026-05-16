@@ -1,6 +1,6 @@
 # Zotero Web API Documentation
 
-The page documents read requests available in the [Zotero Web API](dev/web_api/v3/start), providing read-only access to online Zotero libraries.
+The page documents read requests available in the [Zotero Web API](dev/web_api/v3/), providing read-only access to online Zotero libraries.
 
 ## Base URL
 

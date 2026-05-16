@@ -5,7 +5,7 @@ may be outdated in the meantime. Thanks for your understanding.</p>
 
 # Zotero Server API File Uploads
 
-**This is version 1 of the Zotero Server API. For new development, use [API version 2](dev/server_api/v2/start).**
+**This is version 1 of the Zotero Server API. For new development, use [API version 2](dev/server_api/v2/).**
 
 In addition to providing ways to [read](dev/server_api/v1/read_api) and [write](dev/server_api/v1/write_api) online library data, the Zotero Server API allows you to upload attachment files.
 

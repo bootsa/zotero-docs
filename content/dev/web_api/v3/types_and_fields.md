@@ -1,6 +1,6 @@
 # Zotero Web API Item Type/Field Requests
 
-For a [Zotero Web API](dev/web_api/v3/start) client to present an editing UI to its users, it must know what combinations of Zotero item types, fields, and creator types are valid. Clients can request this data from the Zotero API.
+For a [Zotero Web API](dev/web_api/v3/) client to present an editing UI to its users, it must know what combinations of Zotero item types, fields, and creator types are valid. Clients can request this data from the Zotero API.
 
 As schema changes are currently rare, clients should cache type/field data for a period of time (e.g., one hour) without making further requests. Subsequent requests for new data should then include `If-Modified-Since` headers containing the contents of the `Last-Modified` header from the original response. If no changes have occurred, the server will return a `304 Not Modified` and clients should continue to use cached data for the same period of time. *[Conditional requests -- i.e. `If-Modified-Since` -- are not yet implemented.]*
 

@@ -1,6 +1,6 @@
 # Zotero Web API Syncing
 
-This document outlines the recommended steps for synchronizing a [Zotero Web API](dev/web_api/v3/start) client with the Zotero server. Be sure you've read the [write request](dev/web_api/v3/write_requests) documentation for basic information on modifying data via the API.
+This document outlines the recommended steps for synchronizing a [Zotero Web API](dev/web_api/v3/) client with the Zotero server. Be sure you've read the [write request](dev/web_api/v3/write_requests) documentation for basic information on modifying data via the API.
 
 TODO:
 

@@ -7,7 +7,7 @@ may be outdated in the meantime. Thanks for your understanding.</p>
 
 **This is not currently the default [version](dev/web_api/v3/basics#api_versioning) of the API. Include the `Zotero-API-Version: 3` HTTP header or the `v=3` query parameter to access this version.**
 
-The [Zotero Web API](dev/web_api/v3/start) allows items to be [created manually](dev/web_api/v3/write_requests), but it can also automatically create items from uploaded URLs, similar to the one-click saving from web pages offered in the Zotero client. The server takes care of downloading the page, extracting metadata using Zotero translators, and creating a new item in the library.
+The [Zotero Web API](dev/web_api/v3/) allows items to be [created manually](dev/web_api/v3/write_requests), but it can also automatically create items from uploaded URLs, similar to the one-click saving from web pages offered in the Zotero client. The server takes care of downloading the page, extracting metadata using Zotero translators, and creating a new item in the library.
 
 An [API key](dev/web_api/v3/basics#authentication) with write access to a given library is necessary to use write methods.
 

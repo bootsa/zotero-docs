@@ -1,8 +1,8 @@
 # Zotero Server Read Requests
 
-**This is version 2 of the Zotero Web API. For new development, use [API version 3](dev/web_api/v3/start).**
+**This is version 2 of the Zotero Web API. For new development, use [API version 3](dev/web_api/v3/).**
 
-The page documents read requests available in the [Zotero Web API](dev/web_api/v2/start), providing read-only access to online Zotero libraries.
+The page documents read requests available in the [Zotero Web API](dev/web_api/v2/), providing read-only access to online Zotero libraries.
 
 ## Base URL
 

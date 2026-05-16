@@ -1,6 +1,6 @@
 # Changes in Zotero Web API v3
 
-Version 3 of the [Zotero Web API](dev/web_api/v3/start) introduces a new all-JSON response format and various other changes. While API v3 is mostly backwards compatible, existing clients may need to make [a few small adjustments](#tldr_for_existing_atom_consumers) for full compatibility, depending on usage.
+Version 3 of the [Zotero Web API](dev/web_api/v3/) introduces a new all-JSON response format and various other changes. While API v3 is mostly backwards compatible, existing clients may need to make [a few small adjustments](#tldr_for_existing_atom_consumers) for full compatibility, depending on usage.
 
 -   New default all-JSON response format, `format=json`
     -   Contains a single JSON object for single-object requests and an array of objects for multi-object requests

@@ -8,9 +8,9 @@ We welcome people with a demonstrated history of helping other users in the foru
 
 The Zotero wiki has three main sections:
 
-Most of the wiki pages that are accessible from the [wiki start page](start) belong to the **general user documentation**. These pages form the Zotero manual. The most important task of this part of the wiki is to describe how to install Zotero and use its features.
+Most of the wiki pages that are accessible from the [wiki start page](./) belong to the **general user documentation**. These pages form the Zotero manual. The most important task of this part of the wiki is to describe how to install Zotero and use its features.
 
-The **[developers section](dev/start)** contains information for developers who want to contribute to or built onto the Zotero ecosystem (consisting of the Zotero client, translators, localization, documentation, CSL styles, the Zotero API, etc.).
+The **[developers section](dev/)** contains information for developers who want to contribute to or built onto the Zotero ecosystem (consisting of the Zotero client, translators, localization, documentation, CSL styles, the Zotero API, etc.).
 
 The **[knowledge base](kb)** is a collection of wiki pages that each discuss either a frequently asked question, or a subject concerning Zotero that is of relatively rare interest. The tangential (and often brief) nature of these articles make them a great place to get familiar with documenting Zotero. If a question keeps coming up in the forums, create an article for it and link to it in future forum threads. To add a wiki page to the knowledge base, include the "kb" tag at the bottom of the page:
 

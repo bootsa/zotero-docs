@@ -7,7 +7,7 @@ may be outdated in the meantime. Thanks for your understanding.</p>
 
 **This is not currently the default [version](dev/server_api/v2/read_requests#api_versioning) of the Zotero API. Include the HTTP header `Zotero-API-Version: 2` to access this version.**
 
-This page documents the write methods of the [Zotero Server API](dev/server_api/v2/start). See the [Read Requests](dev/server_api/v2/read_requests) page for basic information on accessing the API, including possible HTTP status codes not listed here.
+This page documents the write methods of the [Zotero Server API](dev/server_api/v2/). See the [Read Requests](dev/server_api/v2/read_requests) page for basic information on accessing the API, including possible HTTP status codes not listed here.
 
 An API key with write access to a given library is necessary to use write methods.
 

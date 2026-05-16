@@ -1,6 +1,6 @@
 # Zotero Web API Write Requests
 
-This page documents the write methods of the [Zotero Web API](dev/web_api/v3/start). See the [Basics](dev/web_api/v3/basics) page for basic information on accessing the API, including possible HTTP status codes not listed here.
+This page documents the write methods of the [Zotero Web API](dev/web_api/v3/). See the [Basics](dev/web_api/v3/basics) page for basic information on accessing the API, including possible HTTP status codes not listed here.
 
 An [API key](dev/web_api/v3/basics#authentication) with write access to a given library is necessary to use write methods.
 

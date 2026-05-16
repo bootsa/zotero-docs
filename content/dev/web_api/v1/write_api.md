@@ -1,8 +1,8 @@
 # Zotero Server Write API
 
-**This is version 1 of the Zotero Web API. For new development, use [API version 3](dev/web_api/v3/start).**
+**This is version 1 of the Zotero Web API. For new development, use [API version 3](dev/web_api/v3/).**
 
-This page documents the write methods of the [Zotero Web API](dev/web_api/v1/start). See the [Read API](dev/web_api/v1/read_api) page for basic information on accessing the API, including possible HTTP status codes not listed here.
+This page documents the write methods of the [Zotero Web API](dev/web_api/v1/). See the [Read API](dev/web_api/v1/read_api) page for basic information on accessing the API, including possible HTTP status codes not listed here.
 
 An API key with write access to a given library is necessary to use write methods.
 

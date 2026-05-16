@@ -5,7 +5,7 @@ may be outdated in the meantime. Thanks for your understanding.</p>
 
 # Zotero Web API Global Search
 
-The [Zotero Web API](dev/web_api/v3/start) provides an interface to search aggregated metadata from the full corpus of public items stored on zotero.org.
+The [Zotero Web API](dev/web_api/v3/) provides an interface to search aggregated metadata from the full corpus of public items stored on zotero.org.
 
 *Global search is currently in beta, with restricted public access. If you would like to test global search, you can email [support@zotero.org](mailto:/mailto/support@zotero.org) to request access.*
 

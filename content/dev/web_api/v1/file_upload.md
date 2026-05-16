@@ -1,6 +1,6 @@
 # Zotero Web API File Uploads
 
-**This is version 1 of the Zotero Web API. For new development, use [API version 3](dev/web_api/v3/start).**
+**This is version 1 of the Zotero Web API. For new development, use [API version 3](dev/web_api/v3/).**
 
 In addition to providing ways to [read](dev/web_api/v1/read_api) and [write](dev/web_api/v1/write_api) online library data, the Zotero Web API allows you to upload attachment files.
 

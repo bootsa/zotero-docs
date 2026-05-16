@@ -7,5 +7,5 @@ may be outdated in the meantime. Thanks for your understanding.</p>
 
 There are two versions of the Zotero Server API:
 
--   [API Version 1](dev/server_api/v1/start) (current default version)
--   [API Version 2](dev/server_api/v2/start) (recommended for new development)
+-   [API Version 1](dev/server_api/v1/) (current default version)
+-   [API Version 2](dev/server_api/v2/) (recommended for new development)

@@ -1,6 +1,6 @@
 # Changes from API Version 1
 
-As [announced on zotero-dev](https://groups.google.com/d/msg/zotero-dev/egIdfVmWEeo/dkOfupK7EXoJ), version 2 of the [Zotero Web API](dev/web_api/v2/start) brings many changes to enable [API-based syncing](dev/web_api/v2/syncing). While read-only clients may continue to work properly, clients that write to the API are likely to need updating.
+As [announced on zotero-dev](https://groups.google.com/d/msg/zotero-dev/egIdfVmWEeo/dkOfupK7EXoJ), version 2 of the [Zotero Web API](dev/web_api/v2/) brings many changes to enable [API-based syncing](dev/web_api/v2/syncing). While read-only clients may continue to work properly, clients that write to the API are likely to need updating.
 
 This page provides a brief summary of changes and may not be comprehensive. See the appropriate documentation sections for full details on all changes.
 

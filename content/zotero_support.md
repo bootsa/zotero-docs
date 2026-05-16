@@ -10,6 +10,6 @@ Beyond technical support, the forums allow the entire community — Zotero devel
 
 Note: While the public nature of the forums are a critical part of what makes them so effective, if you don't want to post under your own name, you can choose a different username for the forums from your [account settings](/settings/profile). You'll also never need to post any private information: if we need any private information to solve your problem, we'll ask you to send that via email with a link to the relevant forum thread.
 
-If you decide you still need in-person help, most university libraries offer Zotero instruction and support, or it might be enough to ask a technically inclined friend or colleague to read through the [detailed documentation](start) we provide on many topics.
+If you decide you still need in-person help, most university libraries offer Zotero instruction and support, or it might be enough to ask a technically inclined friend or colleague to read through the [detailed documentation](./) we provide on many topics.
 
 <p style="font-size: 16px; margin-top: 1.4em; font-weight: bold"><a href="https://forums.zotero.org">Go to the Zotero Forums</a></p>

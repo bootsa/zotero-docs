@@ -5,9 +5,9 @@ may be outdated in the meantime. Thanks for your understanding.</p>
 
 # Zotero Server Read API
 
-**This is version 1 of the Zotero Server API. For new development, use [API version 2](dev/server_api/v2/start).**
+**This is version 1 of the Zotero Server API. For new development, use [API version 2](dev/server_api/v2/).**
 
-The Read API, part of the [Zotero Server API](dev/server_api/v1/start), provides read-only access to online Zotero libraries.
+The Read API, part of the [Zotero Server API](dev/server_api/v1/), provides read-only access to online Zotero libraries.
 
 ## Base URL
 

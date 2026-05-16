@@ -1,6 +1,6 @@
 # Zotero Web API Full-Text Content Requests
 
-This page documents the methods to access full-text content of Zotero items via the [Zotero Web API](dev/web_api/v3/start). See the [Basics](dev/web_api/v3/basics) page for basic information on accessing the API, including possible HTTP status codes not listed here.
+This page documents the methods to access full-text content of Zotero items via the [Zotero Web API](dev/web_api/v3/). See the [Basics](dev/web_api/v3/basics) page for basic information on accessing the API, including possible HTTP status codes not listed here.
 
 ### Getting new full-text content
 

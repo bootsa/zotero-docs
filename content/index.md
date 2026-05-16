@@ -9,7 +9,7 @@
 -   [Frequently Asked Questions](frequently_asked_questions)
 -   [Version History](changelog)
 -   [System Requirements](system_requirements)
--   [For Developers](dev/start)
+-   [For Developers](dev/)
 
 ### Using Zotero
 

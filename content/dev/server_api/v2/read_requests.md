@@ -7,7 +7,7 @@ may be outdated in the meantime. Thanks for your understanding.</p>
 
 **This is not currently the default [version](dev/server_api/v2/read_requests#api_versioning) of the Zotero API. Include the HTTP header `Zotero-API-Version: 2` to access this version.**
 
-The page documents read requests available in the [Zotero Server API](dev/server_api/v2/start), providing read-only access to online Zotero libraries.
+The page documents read requests available in the [Zotero Server API](dev/server_api/v2/), providing read-only access to online Zotero libraries.
 
 ## Base URL
 

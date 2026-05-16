@@ -1,20 +1,15 @@
-<p id="zotero-5-update-warning" style="color: red; font-weight: bold">We’re
-in the process of updating the documentation for
-<a href="https://www.zotero.org/blog/zotero-5-0">Zotero 5.0</a>. Some documentation
-may be outdated in the meantime. Thanks for your understanding.</p>
+# Zotero Web API (Version 2)
 
-# Zotero Server API (version 2)
-
-This is the recommended API version for all new development. To use this version, you currently must include the [Zotero-API-Version HTTP header](dev/server_api/v2/read_requests#api_versioning) in all requests. The current default version of the API is [version 1](dev/server_api/v1/start).
+This is an old version of the Zotero Web API. **For new development, use [API version 3](dev/web_api/v3/).**
 
 ## API Documentation
 
--   [Read Requests](dev/server_api/v2/read_requests)
--   [Write Requests](dev/server_api/v2/write_requests)
--   [File Uploads](dev/server_api/v2/file_upload)
--   [Syncing](dev/server_api/v2/syncing)
--   [OAuth Authentication](dev/server_api/v2/oauth)
--   [Changes from API Version 1](dev/server_api/v2/changes_from_v1)
+-   [Read Requests](dev/web_api/v2/read_requests)
+-   [Write Requests](dev/web_api/v2/write_requests)
+-   [File Uploads](dev/web_api/v2/file_upload)
+-   [Syncing](dev/web_api/v2/syncing)
+-   [OAuth Authentication](dev/web_api/v2/oauth)
+-   [Changes from API Version 1](dev/web_api/v2/changes_from_v1)
 
 ## API Support
 
@@ -22,9 +17,10 @@ Please post questions regarding the Zotero API to the [zotero-dev](http://groups
 
 ## API Implementations
 
-Known implementations of the Zotero Server API include:
+Known implementations of the Zotero Web API include:
 
 -   <https://github.com/fcheslack/libZotero> (PHP and Python)
+-   <https://github.com/shazino/SZNZotero> (Objective-C)
 -   <https://github.com/urschrei/pyzotero> (Python)
 -   <https://github.com/clioweb/phpZotero> (PHP, no longer maintained)
 -   <https://github.com/scholarpress/scholarpress-workshop>

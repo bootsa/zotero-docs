@@ -1,26 +1,24 @@
-# Zotero Web API (Version 2)
+<p id="zotero-5-update-warning" style="color: red; font-weight: bold">We’re
+in the process of updating the documentation for
+<a href="https://www.zotero.org/blog/zotero-5-0">Zotero 5.0</a>. Some documentation
+may be outdated in the meantime. Thanks for your understanding.</p>
 
-This is an old version of the Zotero Web API. **For new development, use [API version 3](dev/web_api/v3/start).**
+# Zotero Server API (Version 1)
+
+This is the current default version of the Zotero Server API. This version will be discontinued in the near future. For new development, use [API version 2](dev/server_api/v2/).
 
 ## API Documentation
 
--   [Read Requests](dev/web_api/v2/read_requests)
--   [Write Requests](dev/web_api/v2/write_requests)
--   [File Uploads](dev/web_api/v2/file_upload)
--   [Syncing](dev/web_api/v2/syncing)
--   [OAuth Authentication](dev/web_api/v2/oauth)
--   [Changes from API Version 1](dev/web_api/v2/changes_from_v1)
-
-## API Support
-
-Please post questions regarding the Zotero API to the [zotero-dev](http://groups.google.com/group/zotero-dev) mailing list.
+-   [Read API](dev/server_api/v1/read_api)
+-   [Write API](dev/server_api/v1/write_api)
+-   [File Uploads](dev/server_api/v1/file_upload)
+-   [OAuth Authentication](dev/server_api/v1/oauth)
 
 ## API Implementations
 
-Known implementations of the Zotero Web API include:
+Known implementations of the Zotero Server API include:
 
 -   <https://github.com/fcheslack/libZotero> (PHP and Python)
--   <https://github.com/shazino/SZNZotero> (Objective-C)
 -   <https://github.com/urschrei/pyzotero> (Python)
 -   <https://github.com/clioweb/phpZotero> (PHP, no longer maintained)
 -   <https://github.com/scholarpress/scholarpress-workshop>
@@ -34,5 +32,3 @@ The API‌ forms a fundamental part of several projects, including:
 -   [Scanner for Zotero](https://github.com/jmschanck/Scanner-For-Zotero), Android app which saves items to Zotero libraries using the write API (Java, GPL-licensed)
 -   [Zandy](https://github.com/ajlyon/zandy) Android app using the read and write APIs to provide full access to Zotero libraries (Java, AGPL-licensed)
 -   [ZotPad](http://www.zotpad.com) iPad/iPhone app using the read and file upload APIs to provide read access to Zotero libraries and read/write access to attachment files. Write access is planned. (Objective C, GPL-licensed)
--   [Zotero Reader](http://www.zoteroreader.com) Browser app that provides read access to Zotero library and read/write access to PDF attachments. (Javascript/PHP)
--   [ZotSpip](http://plugins.spip.net/zotspip.html), a SPIP plugin to synchronise a Zotero library with SPIP (a content management system). References can be presented in web pages and searched through a dedicated webpage. A complementary plugin (BiblioCheck) allows a research unit to manage corrections to apply to the unit bibliography. (PHP)

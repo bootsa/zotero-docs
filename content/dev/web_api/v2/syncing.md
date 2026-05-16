@@ -1,6 +1,6 @@
 # API-Based Syncing
 
-**This is version 2 of the Zotero Web API. For new development, use [API version 3](dev/web_api/v3/start).**
+**This is version 2 of the Zotero Web API. For new development, use [API version 3](dev/web_api/v3/).**
 
 This document outlines the recommended steps for synchronizing a Zotero API client with the Zotero server.
 

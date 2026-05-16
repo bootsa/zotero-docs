@@ -31,12 +31,12 @@ use_directory_urls: true
 hooks:
   - hooks.py
 
-# Curated sidebar. Mirrors start.md's organization but trimmed of pages that
+# Curated sidebar. Mirrors index.md's organization but trimmed of pages that
 # don't belong in a navigation menu (footer/policy pages, link-only stubs like
 # zotero_support, individual screencasts, etc.). Pages not listed here are
 # still built and searchable — they're just not in the sidebar.
 nav:
-  - Home: start.md
+  - Home: index.md
 
   - Getting Started:
       - Installation: installation.md
@@ -88,7 +88,7 @@ nav:
       - File Sync Issues: kb/files_not_syncing.md
       - File Handling Issues: kb/file_handling_issues.md
 
-  - Developers: dev/start.md
+  - Developers: dev/index.md
 
 markdown_extensions:
   - admonition
