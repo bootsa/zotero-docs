@@ -64,11 +64,11 @@ This means that, if you just want to insert a citation for the PDF you’re read
 
 If you've already cited an item in your library, you can type its author or title, and it will show up in a Cited Items section at the top of the dialog. This also helps you avoid accidentally creating duplicate references for items that are duplicated in your library.
 
-### What happened to the "Show Editor…" button?
+### What happened to the citation editor?
 
 In the new dialog, there's no text field to make manual edits to citations. It's been possible to edit citations directly in the document since the introduction of the red-bar dialog in 2011, which is why the red bar never included such a text field.
 
-More importantly, though, such manual edits should be avoided in almost all cases, since they prevent Zotero from updating the citation as you edit metadata, add other citations, or change citation styles. Instead, [customize the citation](word_processor_plugin_usage#customizing_citations) via the citation dialog, which will allow Zotero to continue to update the citation as necessary.
+More importantly, though, such manual edits should be avoided in almost all cases, since they prevent Zotero from updating the citation as you edit metadata, add other citations, or change citation styles. Instead, [customize the citation](word_processor_plugin_usage#customizing_citations) via the citation dialog, which will allow Zotero to continue to update the citation as necessary. If you're finding yourself regularly wanting to edit citations, post to the Zotero Forums with examples, and we may be able to suggest a better approach that avoids breaking citation updates.
 
 ## Comparing Common Actions
 
