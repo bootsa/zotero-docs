@@ -55,6 +55,15 @@ def _build_last_modified(repo_root):
     back to the legacy DokuWiki dates from `dokuwiki_dates.json`, so the
     site shows real edit dates for the pre-migration history.
 
+    Renames detected by git (-M) are followed: a file's history under its
+    old name still counts toward the new name's last-modified date, and
+    the DokuWiki fallback also checks the historical name's key.
+
+    Commits whose subject contains `[minor]` are skipped here -- mechanical
+    sweeps (link rewrites, bulk reformats, etc.) shouldn't reset a page's
+    perceived last-edit time. The marker is per commit, so keep `[minor]`
+    commits pure-mechanical; mix substantive edits into a separate commit.
+
     Requires the full git history — in CI, make sure actions/checkout
     uses `fetch-depth: 0`."""
     if _last_modified:
@@ -69,23 +78,49 @@ def _build_last_modified(repo_root):
 
     try:
         proc = subprocess.run(
-            ['git', '-C', str(repo_root), 'log',
-             '--name-only', '--format=COMMIT %H %cs'],
+            ['git', '-C', str(repo_root), 'log', '-M',
+             '--name-status', '--format=COMMIT %H %cs %s'],
             capture_output=True, text=True, check=True,
         )
     except (subprocess.CalledProcessError, FileNotFoundError):
         return
 
-    # First sighting of each file in the reverse-chronological log == newest
-    seen = {}  # repo-relative path -> (sha, iso-date)
+    # Walk reverse-chronological. For each file, the first sighting under
+    # its *current* name is the newest non-[minor] commit that touched it.
+    # Renames are folded in via alias_to_current, so a file's pre-rename
+    # history counts toward its new name.
+    seen = {}                # current name -> (sha, iso-date)
+    alias_to_current = {}    # historical name -> current name
+    first_known_alias = {}   # current name -> oldest historical alias
     cur_sha = None
     cur_date = None
+    cur_skip = False
     for line in proc.stdout.splitlines():
         if line.startswith('COMMIT '):
             rest = line[len('COMMIT '):]
-            cur_sha, _, cur_date = rest.partition(' ')
-        elif line and cur_sha and cur_date and line not in seen:
-            seen[line] = (cur_sha, cur_date)
+            cur_sha, _, rest = rest.partition(' ')
+            cur_date, _, subject = rest.partition(' ')
+            cur_skip = '[minor]' in subject
+            continue
+        if not line:
+            continue
+        parts = line.split('\t')
+        status = parts[0]
+        if status.startswith('R') and len(parts) == 3:
+            old, new = parts[1], parts[2]
+            # `new` may itself have been renamed in a newer commit we've
+            # already processed -- chase to the current name.
+            path = alias_to_current.get(new, new)
+            alias_to_current[old] = path
+            # Walking newest-first, each older rename overwrites this with
+            # an even-older alias; we end with the oldest known name.
+            first_known_alias[path] = old
+        elif len(parts) == 2 and status and status[0] in 'MADT':
+            path = alias_to_current.get(parts[1], parts[1])
+        else:
+            continue
+        if cur_sha and cur_date and not cur_skip and path not in seen:
+            seen[path] = (cur_sha, cur_date)
 
     # DokuWiki fallback map: { "kb/foo": "YYYY-MM-DD", ... }
     dw_path = repo_root / 'dokuwiki_dates.json'
@@ -94,11 +129,16 @@ def _build_last_modified(repo_root):
     except (json.JSONDecodeError, OSError):
         dw_dates = {}
 
+    def _dw_lookup(name):
+        if not name or not name.startswith('content/') or not name.endswith('.md'):
+            return None
+        return dw_dates.get(name[len('content/'):-len('.md')])
+
     for f, (sha, date) in seen.items():
-        if sha == initial and f.startswith('content/') and f.endswith('.md'):
-            key = f[len('content/'):-len('.md')]
-            if key in dw_dates:
-                _last_modified[f] = dw_dates[key]
+        if sha == initial:
+            dw_date = _dw_lookup(f) or _dw_lookup(first_known_alias.get(f))
+            if dw_date:
+                _last_modified[f] = dw_date
                 continue
         _last_modified[f] = date
 
