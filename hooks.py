@@ -200,8 +200,11 @@ def _page_url(src_path):
     return URL_PREFIX + _content_relpath(src_path)
 
 
-# Markdown link with [text](target) form
-_LINK_RE = re.compile(r'\[([^\]]*)\]\(([^)]+)\)')
+# Markdown link with [text](target) form. The text segment accepts
+# backslash-escaped chars (`\[`, `\]`) so pages whose H1 contains bracketed
+# placeholders (e.g. "[domain] uses an invalid security certificate") still
+# parse correctly when used as link text in topic expansions.
+_LINK_RE = re.compile(r'\[((?:\\.|[^\]])*)\]\(([^)]+)\)')
 
 # Schemes / forms that aren't candidates for internal docs resolution
 _NON_INTERNAL = re.compile(r'^([a-z][a-z0-9+\-.]*://|mailto:|#|/)')
@@ -369,8 +372,13 @@ def _expand_topic(spec):
     if not candidates:
         return '*(no pages match this topic yet)*'
     # Emit content-root-relative paths; the link-resolution pass turns them
-    # into proper relative `.md` paths so MkDocs can validate them.
-    lines = [f'- [{title}]({relpath})' for relpath, title in sorted(candidates, key=lambda p: p[1].lower())]
+    # into proper relative `.md` paths so MkDocs can validate them. Escape
+    # `[` and `]` in titles -- some pages use bracketed placeholders like
+    # `[domain]` in their H1, which would otherwise terminate the link-text
+    # regex prematurely.
+    def _esc(s):
+        return s.replace('[', r'\[').replace(']', r'\]')
+    lines = [f'- [{_esc(title)}]({relpath})' for relpath, title in sorted(candidates, key=lambda p: p[1].lower())]
     return '\n'.join(lines)
 
 
