@@ -302,9 +302,23 @@ def _absolutize_urls(html, page, files):
     at /support/<page.url>/, and we rewrite `/`-prefixed paths that match
     a built docs file (typically images) to `/support/<path>` so they
     don't leak out to the site root. Paths that don't match anything in
-    the build pass through unchanged."""
+    the build pass through unchanged.
+
+    Also strips the trailing slash MkDocs adds to internal page links (an
+    artifact of `use_directory_urls: true`) so rendered hrefs look like
+    `/support/kb/foo` rather than `/support/kb/foo/`."""
     page_base = URL_PREFIX + page.url
     file_urls = {f.url.rstrip('/') for f in files}
+
+    def _strip_page_slash(url):
+        head, sep, tail = url.partition('#')
+        if not sep:
+            head, sep, tail = url.partition('?')
+        if not head.endswith('/') or not head.startswith(URL_PREFIX) or head == URL_PREFIX:
+            return url
+        if head[len(URL_PREFIX):].rstrip('/') in file_urls:
+            return head.rstrip('/') + (sep + tail if sep else '')
+        return url
 
     def repl(m):
         attr, val = m.group(1), m.group(2)
@@ -313,9 +327,9 @@ def _absolutize_urls(html, page, files):
         if val.startswith('/'):
             path_only = val.split('#', 1)[0].split('?', 1)[0].lstrip('/').rstrip('/')
             if path_only in file_urls:
-                return f'{attr}="{URL_PREFIX.rstrip("/")}{val}"'
-            return m.group(0)
-        return f'{attr}="{urllib.parse.urljoin(page_base, val)}"'
+                return f'{attr}="{_strip_page_slash(URL_PREFIX.rstrip("/") + val)}"'
+            return f'{attr}="{_strip_page_slash(val)}"'
+        return f'{attr}="{_strip_page_slash(urllib.parse.urljoin(page_base, val))}"'
 
     return re.sub(r'\b(href|src)="([^"]*)"', repl, html)
 
