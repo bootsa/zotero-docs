@@ -210,19 +210,37 @@ _NON_INTERNAL = re.compile(r'^([a-z][a-z0-9+\-.]*://|mailto:|#|/)')
 def _resolve_internal_link(text, target, page_dir, content_root):
     """Translate a docs-internal link like `kb/foo` (content-root-relative,
     no extension) to the relative `.md` form MkDocs validates natively.
-    Returns the rewritten `[text](rel.md#anchor)` string, or None if the
-    link isn't an internal docs reference or doesn't resolve."""
+    Also handles directory-index forms: `dev/` resolves to `dev/index.md`,
+    and `./` resolves to the current directory's index. Returns the
+    rewritten `[text](rel.md#anchor)` string, or None if the link isn't an
+    internal docs reference or doesn't resolve."""
     if not target or _NON_INTERNAL.match(target):
         return None
     path_part, sep, anchor = target.partition('#')
     if not path_part or '?' in path_part:
         return None
     suffix = ('#' + anchor) if sep else ''
-    candidate = content_root / (path_part + '.md')
-    if candidate.exists():
-        target_md = path_part + '.md'
+
+    def _emit(target_md):
         rel = posixpath.relpath(target_md, page_dir) if page_dir else target_md
         return f'[{text}]({rel}{suffix})'
+
+    # `(./)` / `(.)` -> current directory's index
+    if path_part in ('.', './'):
+        target_md = posixpath.join(page_dir, 'index.md') if page_dir else 'index.md'
+        if (content_root / target_md).exists():
+            return _emit(target_md)
+
+    candidate = content_root / (path_part + '.md')
+    if candidate.exists():
+        return _emit(path_part + '.md')
+
+    # `(dev/)` -> dev/index.md
+    if path_part.endswith('/'):
+        target_md = path_part + 'index.md'
+        if (content_root / target_md).exists():
+            return _emit(target_md)
+
     # Unresolved internal-looking link: emit an absolute /support/<path>
     # URL so it doesn't get treated as relative-to-current-page by mkdocs
     # (which produces wrong paths on deep pages, e.g. /support/foo/bar
@@ -242,8 +260,10 @@ def on_files(files, config):
     for f in files:
         if not f.is_documentation_page():
             continue
-        url = _page_url(f.src_path)
-        url_key = url.rstrip('/')
+        # `f.url` is the MkDocs-emitted URL (respects use_directory_urls
+        # and collapses `dev/index.md` to `dev/`), which is what rendered
+        # links resolve to; the raw src_path form would miss those.
+        url_key = (URL_PREFIX + f.url).rstrip('/')
         _valid_urls.add(url_key)
         meta, body = _read_frontmatter(f.abs_src_path)
         _page_anchors[url_key] = _extract_anchors(body)
@@ -262,13 +282,13 @@ _EXTERNAL_HREF = re.compile(r'^(https?://|#|mailto:|javascript:|data:|tel:|ftp:/
 def _absolutize_urls(html, page, files):
     """Rewrite href/src values so the rendered HTML works regardless of the
     URL the PHP wrapper serves it at. MkDocs emits relative paths like
-    `../installation/` that only resolve when the page is served at its
-    mkdocs-computed URL (e.g. /support/start/) — our wrapper serves start.md
-    at /support/ and accepts URLs without trailing slash, which breaks that
-    assumption. So we anchor every relative path at /support/<page.url>/,
-    and we rewrite `/`-prefixed paths that match a built docs file (typically
-    images) to `/support/<path>` so they don't leak out to the site root.
-    Paths that don't match anything in the build pass through unchanged."""
+    `../installation/` that resolve only when the page is served at its
+    mkdocs-computed URL; the wrapper also accepts URLs without trailing
+    slash, which breaks that assumption. So we anchor every relative path
+    at /support/<page.url>/, and we rewrite `/`-prefixed paths that match
+    a built docs file (typically images) to `/support/<path>` so they
+    don't leak out to the site root. Paths that don't match anything in
+    the build pass through unchanged."""
     page_base = URL_PREFIX + page.url
     file_urls = {f.url.rstrip('/') for f in files}
 
@@ -375,8 +395,8 @@ def _slug_to_title(slug):
 
 def on_page_markdown(markdown, page, config, files):
     # Auto-inject an H1 derived from the file slug when the page has none.
-    # `<namespace>/start.md` uses the namespace name (e.g. dev/start.md →
-    # "Dev") since the literal slug "start" wouldn't be meaningful.
+    # `<namespace>/index.md` uses the namespace name (e.g. dev/index.md →
+    # "Dev") since the literal slug "index" wouldn't be meaningful.
     body = markdown
     fm_end = 0
     if body.startswith('---\n'):
@@ -388,7 +408,7 @@ def on_page_markdown(markdown, page, config, files):
         src = page.file.src_path
         slug = src[:-3] if src.endswith('.md') else src
         parts = slug.split('/')
-        base = parts[-2] if len(parts) > 1 and parts[-1] == 'start' else parts[-1]
+        base = parts[-2] if len(parts) > 1 and parts[-1] == 'index' else parts[-1]
         body = body[:fm_end] + '# ' + _slug_to_title(base) + '\n\n' + body[fm_end:]
 
     # Last-modified date from git, for the page footer. Cheap once cached.
