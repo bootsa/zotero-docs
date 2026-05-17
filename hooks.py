@@ -203,8 +203,19 @@ def _page_url(src_path):
 # Markdown link with [text](target) form. The text segment accepts
 # backslash-escaped chars (`\[`, `\]`) so pages whose H1 contains bracketed
 # placeholders (e.g. "[domain] uses an invalid security certificate") still
-# parse correctly when used as link text in topic expansions.
-_LINK_RE = re.compile(r'\[((?:\\.|[^\]])*)\]\(([^)]+)\)')
+# parse correctly when used as link text in topic expansions. It also
+# accepts an image-with-optional-attrs `![alt](url){.attr ...}` as a single
+# unit so `[![](thumb.png){ width=150 }](target)` patterns resolve `target`
+# (without this, the regex would mis-grab the image URL as the link target).
+_LINK_RE = re.compile(
+    r'\['
+    r'((?:'
+    r'!\[[^\]]*\]\([^)]*\)(?:\{[^}]*\})?'
+    r'|\\.|[^\]]'
+    r')*)'
+    r'\]'
+    r'\(([^)]+)\)'
+)
 
 # Schemes / forms that aren't candidates for internal docs resolution
 _NON_INTERNAL = re.compile(r'^([a-z][a-z0-9+\-.]*://|mailto:|#|/)')
