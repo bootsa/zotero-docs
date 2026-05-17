@@ -19,6 +19,7 @@ import json
 import posixpath
 import re
 import subprocess
+import sys
 import urllib.parse
 from pathlib import Path
 
@@ -43,6 +44,9 @@ _tag_index: dict = {}
 _valid_urls: set = set()
 _page_anchors: dict = {}  # url (no trailing slash) -> set of anchor ids
 _last_modified: dict = {}  # repo-relative path -> ISO date string
+# `on_serve` fires *after* the initial build, so on_post_page would miss the
+# first pass. Detect serve mode at import time from argv instead.
+_serving = 'serve' in sys.argv
 
 
 def _build_last_modified(repo_root):
@@ -369,3 +373,20 @@ def on_page_markdown(markdown, page, config, files):
         return rewritten if rewritten is not None else m.group(0)
 
     return _LINK_RE.sub(_resolve, body)
+
+
+def on_post_page(output, page, config):
+    """In `mkdocs serve`, wrap the fragment in a minimal HTML document so
+    the browser knows it's UTF-8. The dev server returns `text/html` with
+    no charset, and the theme template emits a fragment with no <head>,
+    so without this wrapper the browser falls back to a non-UTF-8 default
+    and mangles characters like the search-box ellipsis."""
+    if not _serving:
+        return output
+    title = (page.title or 'Zotero Documentation').replace('"', '&quot;')
+    return (
+        '<!DOCTYPE html><html lang="en"><head>'
+        '<meta charset="utf-8">'
+        f'<title>{title}</title>'
+        '</head><body>' + output + '</body></html>'
+    )
