@@ -14,6 +14,12 @@ We know that switching to a new interface after many years can be a little jarri
 
 ## Frequently Asked Questions
 
+### Can I switch back to the classic dialog?
+
+No. The classic dialog has been removed and won't be returning. Many features have been added to Zotero's word processor integration over the years, and the classic dialog wasn't able to take advantage of any of them. Maintaining a separate, parallel dialog also diverts development time from improvements to the parts of Zotero that everyone uses. The new dialog was designed to combine the library browser that classic-dialog users want with all the modern features.
+
+If you're having trouble adjusting to the new dialog, let us know in the [Zotero Forums](https://forums.zotero.org). We're actively improving both the documentation and the dialog itself in response to feedback.
+
 ### How do I browse my collections like before?
 
 Select "Library" mode in the bottom right of the window. Library mode shows the same collections and items lists you had in the classic dialog.
@@ -37,12 +43,6 @@ It doesn't! The new dialog requires fewer steps to perform most common actions, 
 Bear in mind that the classic dialog hasn't been the default citation dialog in Zotero for 15 years. Citing hasn't been slower for all the people using the default dialog that entire time — it's been faster.
 
 See [Comparing Common Actions](#comparing_common_actions) for a detailed comparison between the classic and new dialogs.
-
-### Can I switch back to the classic dialog?
-
-No. The classic dialog has been removed and won't be returning. Many features have been added to Zotero's word processor integration over the years, and the classic dialog wasn't able to take advantage of any of them. Maintaining a separate, parallel dialog also diverts development time from improvements to the parts of Zotero that everyone uses. The new dialog was designed to combine the library browser that classic-dialog users want with all the modern features.
-
-If you're having trouble adjusting to the new dialog, let us know in the [Zotero Forums](https://forums.zotero.org). We're actively improving both the documentation and the dialog itself in response to feedback.
 
 ### How do I cite multiple items at once?
 
