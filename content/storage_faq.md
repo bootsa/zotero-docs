@@ -22,7 +22,7 @@ Various payment methods are supported, including all major credit and debit card
 
 In addition to credit and debit cards, there are several other payment methods common in specific regions that can be used. If purchasing from the EU, you can choose to make your payment in Euro in the payment dialog which will enable several EUR specific payment methods.
 
-If you can't use any of the supported payment methods or you encounter problems after trying to pay via your [storage settings page](/settings/storage), please send an email to [storage@zotero.org](mailto:/mailto/storage@zotero.org) and describe the issue you're having.
+If you can't use any of the supported payment methods or you encounter problems after trying to pay via your [storage settings page](/settings/storage), please send an email to [storage@zotero.org](mailto:storage@zotero.org) and describe the issue you're having.
 
 For individual storage purchases we're unlikely to be able to make immediate changes, but we can consider supporting additional payment methods in the future.
 
@@ -74,6 +74,6 @@ Non-US tax-registered businesses may be exempt from paying consumption-based tax
 
 ### My organization is exempt from sales tax in our state. How do I apply that to my subscription?
 
-For Lab or Institution subscriptions, you can email us at [storage@zotero.org](mailto:/mailto/storage@zotero.org) with a copy of your sales tax exemption certificate or other relevant documentation. Note that this must be done before a purchase is made.
+For Lab or Institution subscriptions, you can email us at [storage@zotero.org](mailto:storage@zotero.org) with a copy of your sales tax exemption certificate or other relevant documentation. Note that this must be done before a purchase is made.
 
 Individual Zotero storage subscriptions are intended for sales to individuals. We're not able to manage sales tax exemptions for individual storage subscriptions.

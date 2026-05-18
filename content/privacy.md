@@ -110,4 +110,4 @@ We may update our privacy policies over time. Up-to-date information, including 
 
 ## Questions
 
-If you have any questions or concerns regarding Zotero’s privacy policies, please ask us in the [Zotero Forums](https://forums.zotero.org) or email [privacy@zotero.org](mailto:/mailto/privacy@zotero.org).
+If you have any questions or concerns regarding Zotero’s privacy policies, please ask us in the [Zotero Forums](https://forums.zotero.org) or email [privacy@zotero.org](mailto:privacy@zotero.org).
