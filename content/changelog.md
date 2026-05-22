@@ -2,6 +2,17 @@
 
 Changes in released versions of Zotero 9.0 are documented on this page. To follow development, see the [commit log on GitHub](https://github.com/zotero/zotero/commits/). More recent changes may be available in a [beta build](beta_builds).
 
+## Changes in 9.0.4 (May 22, 2026)
+
+- Fixed broken search/indexing after app had been open for a while
+- Citation dialog: Restored sorting of libraries by number of cited items
+- Read Aloud: Increased maximum reading speed to 3x
+- [Mac/Safari] Fixed error in Google Doc with edited citations
+- Reader fixes
+  - Fixed shortcut keys on keyboards with alternative layouts
+  - EPUB: Fixed outline navigation for some files
+  - EPUB: Fixed page number not being recognized for some files
+  
 ## Changes in 9.0.3 (May 6, 2026)
 
 -   [Windows] Fixed Word plugin buttons not responding if Zotero.dotm couldn't be updated in Word Startup folder
