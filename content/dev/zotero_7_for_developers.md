@@ -520,7 +520,7 @@ Zotero 7 supports binding fields to preferences in almost the same way, without 
 <html:input type="text" preference="extensions.zotero.makeItRed.color"/>
 ```
 
-Zotero 6 also supported getting and setting preferences through `<preferences>` tags. For example, in the Zotero 6 example above, JavaScript code could get the value of `extensions.zotero.makeItRed.color` by calling `document.getElementById('pref-makeItRed-color').value`. This is no longer supported --- call `Zotero.Prefs.get()` directly.
+Zotero 6 also supported getting and setting preferences through `<preferences>` tags. For example, in the Zotero 6 example above, JavaScript code could get the value of `extensions.zotero.makeItRed.color` by calling `document.getElementById('pref-makeItRed-color').value`. This is no longer supported — call `Zotero.Prefs.get()` directly.
 
 ### Custom Item Tree Columns
 

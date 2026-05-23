@@ -159,7 +159,7 @@ The API supports two ways of modifying item data: by uploading full item data (`
 
 #### Full-item updating (PUT)
 
-With `PUT`, you submit the item's complete editable JSON to the server, typically by modifying the downloaded editable JSON --- that is, the contents of the `data` property --- directly and resubmitting it:
+With `PUT`, you submit the item's complete editable JSON to the server, typically by modifying the downloaded editable JSON — that is, the contents of the `data` property — directly and resubmitting it:
 
     PUT <userOrGroupPrefix>/items/<itemKey>
     Content-Type: application/json
@@ -488,7 +488,7 @@ For [syncing](dev/web_api/v3/syncing) objects with predetermined keys, an [objec
       }
     }
 
-The keys of the `successful`, `unchanged`, and `failed` objects are the numeric indexes of the Zotero objects in the uploaded array. The `Last-Modified-Version` is the version that has been assigned to any Zotero objects in the `successful` object --- that is, objects that were modified in this request.
+The keys of the `successful`, `unchanged`, and `failed` objects are the numeric indexes of the Zotero objects in the uploaded array. The `Last-Modified-Version` is the version that has been assigned to any Zotero objects in the `successful` object — that is, objects that were modified in this request.
 
 <table>
   <thead>

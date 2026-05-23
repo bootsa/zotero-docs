@@ -278,7 +278,7 @@ These apply to both `citation` and `bibliography` sections.
 <option name="second-field-align" value="margin"/>
 ```
 
--   subsequent-author-substitute - substitutes subsequent recurrences of an author for a given string, such as "--- --- ---". Help wanted here!
+-   subsequent-author-substitute - substitutes subsequent recurrences of an author for a given string, such as "— — —". Help wanted here!
 
 ``` xml
 <option subsequent-author-substitute="some text"/>

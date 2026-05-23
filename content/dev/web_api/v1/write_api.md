@@ -237,7 +237,7 @@ Note content will be treated as HTML and sanitized automatically.
     <tr><th colspan="2">Common responses</th></tr>
   </thead>
   <tbody>
-    <tr><td><code>201 Created</code></td><td>Item(s) successfully created --- see example Atom response below</td></tr>
+    <tr><td><code>201 Created</code></td><td>Item(s) successfully created — see example Atom response below</td></tr>
     <tr><td><code>400 Bad Request</code></td><td>Invalid type/field; unparseable JSON</td></tr>
     <tr><td><code>409 Conflict</code></td><td>The target library is locked.</td></tr>
     <tr><td><code>412 Precondition Failed</code></td><td>The provided <code>X-Zotero-Write-Token</code> has already been submitted.</td></tr>

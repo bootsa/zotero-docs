@@ -106,7 +106,7 @@ Note that, after a problem occurs, other things in Zotero may temporarily break,
 
 ## Reporting Startup Errors
 
-For serious problems that prevent you from using the reporting wizard --- such as Zotero not opening at all --- we may need more information:
+For serious problems that prevent you from using the reporting wizard — such as Zotero not opening at all — we may need more information:
 
 1\. First, be sure you've tried restarting your computer. Many startup errors will go away after a computer restart.
 
