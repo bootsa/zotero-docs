@@ -103,11 +103,12 @@ markdown_extensions:
       # Use underscores in heading IDs to match Dokuwiki convention, so
       # existing in-page anchor links (e.g. `#saving_webpages`) still work.
       separator: '_'
-  # Build-time typography: straight quotes → curly, ... → ellipsis. Smart
-  # dashes are disabled because pandoc emitted some prose em-dashes as plain
-  # `--`, which smarty would turn into en-dashes (the wrong direction).
+  # Build-time typography: straight quotes → curly, ... → ellipsis, `--`
+  # and `---` → em-dash. The corpus inherited `--` em-dashes from the
+  # pandoc conversion, so `ndash` is overridden from the default en-dash
+  # to match.
   - smarty:
-      smart_dashes: false
+      smart_dashes: true
       smart_quotes: true
       smart_ellipses: true
       substitutions:
@@ -116,3 +117,5 @@ markdown_extensions:
         left-double-quote: "“"
         right-double-quote: "”"
         ellipsis: "…"
+        ndash: "—"
+        mdash: "—"

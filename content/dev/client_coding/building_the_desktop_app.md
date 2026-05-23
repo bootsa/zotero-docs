@@ -86,10 +86,7 @@ See [Setting Up a Plugin Development Environment](dev/client_coding/plugin_devel
 
 ### Windows
 
--   Verify that git is set to check out files without modifying line endings.`$ git config --global core.autocrlf
-
-    `The response should be either empty (meaning `false`) or `input`. If set to `true` (as it may be if you selected the default option while installing the Windows version of git), change this with the following command:`git config --global core.autocrlf false
-    `See the [git manual](http://git-scm.com/docs/git-config) for details on this setting.
+-   Verify that git is set to check out files without modifying line endings. Run `git config --global core.autocrlf`; the response should be either empty (meaning `false`) or `input`. If set to `true` (as it may be if you selected the default option while installing the Windows version of git), change this with `git config --global core.autocrlf false`. See the [git manual](http://git-scm.com/docs/git-config) for details on this setting.
 -   [Install NSIS 3](https://nsis.sourceforge.io/Download) and install the necessary plugins by running `app/win/download-nsis-plugins`.
 -   The [Windows SDK](https://developer.microsoft.com/en-US/windows/downloads/windows-sdk/) is needed for the included `signtool.exe` utility. You can uncheck all other installation options. Adjust the path in `app/config.sh` to point to the correct version of the Windows SDK.
 
