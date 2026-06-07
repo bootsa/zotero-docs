@@ -1,6 +1,6 @@
 # Zotero Web API Documentation
 
-The page documents read requests available in the [Zotero Web API](dev/web_api/v3/), providing read-only access to online Zotero libraries.
+This page documents read requests available in the [Zotero Web API](dev/web_api/v3/), providing read-only access to online Zotero libraries. The Zotero desktop client exposes the same endpoints as a [local API](dev/web_api/v3/local_api) that serves data from the local database, which is useful for code running on the user's computer.
 
 ## Base URL
 
@@ -8,7 +8,7 @@ The base URL for all API requests is
 
     https://api.zotero.org
 
-All requests must use HTTPS.
+All requests must use HTTPS. (The local API uses `http://localhost:23119/api/` instead; see [Local API](dev/web_api/v3/local_api).)
 
 ## API Versioning
 
@@ -42,6 +42,12 @@ API keys can be included in requests in one of three ways:
 Use of an HTTP header is recommended, as it allows use of URLs returned from the API (e.g., for pagination) without modification.
 
 `Authorization: Bearer` is also the authentication mechanism for OAuth 2.0. While Zotero currently supports only OAuth 1.0a, when support for OAuth 2.0 is added, clients will no longer need to extract the API key from the OAuth response and pass it to the API separately.
+
+The [local API](dev/web_api/v3/local_api) does not use authentication.
+
+## Local API
+
+The Zotero desktop client exposes a local implementation of this API on `localhost:23119` under `/api/`, serving data from the user's local database. See [Local API](dev/web_api/v3/local_api) for details. The sections below note where local API behavior diverges from the Web API.
 
 ## Resources
 
@@ -149,6 +155,8 @@ Export formats, valid only for item requests, produce output in the specified fo
 </tbody>
 </table>
 
+The [local API](dev/web_api/v3/local_api) does not support `format=atom`; requests using it return `501 Not Implemented`. All other formats are supported.
+
 ### Parameters for "format=json"
 
 <table>
@@ -204,6 +212,8 @@ If multiple formats are requested, <code>&lt;content&gt;</code> will contain mul
 </tbody>
 </table>
 
+The Atom parameters above do not apply to the [local API](dev/web_api/v3/local_api), which does not produce Atom output.
+
 ### Parameters for "format=bib", "include/content=bib", "include/content=citation"
 
 | Parameter  | Values  | Default                     | Description                                                                                                                                                                                                                                   |
@@ -246,6 +256,8 @@ The following bibliographic data formats can be used as `format`, `include`, and
 | `q`        | string                          | null    | Quick search. Searches titles and individual creator fields by default. Use the `qmode` parameter to change the mode. Currently supports phrase searching only.                |
 | `since`    | integer                         | `0`     | Return only objects modified after the specified library version, returned in a previous `Last-Modified-Version` header. See [Syncing](dev/web_api/v3/syncing) for more info. |
 | `tag`      | [search syntax](#search_syntax) | null    | Tag search                                                                                                                                                                     |
+
+The [local API](dev/web_api/v3/local_api) accepts the same search parameters but uses Zotero's local quicksearch implementation, so the set of items returned by a given `q` value may not match the Web API exactly.
 
 ### Search Parameters (Items Endpoints)
 
@@ -301,9 +313,11 @@ The following parameters are valid only for multi-object read requests such as `
 | `limit`     | integer 1-100\*                                                                                                                                                                                                               | `25`                                  | The maximum number of results to return with a single request. Required for export formats.                 |
 | `start`     | integer                                                                                                                                                                                                                       | `0`                                   | The index of the first result. Combine with the limit parameter to select a slice of the available results. |
 
+The [local API](dev/web_api/v3/local_api) does not impose a default or maximum `limit`. If `limit` is omitted, all matching objects are returned in one response. Pagination parameters and `Link` headers still work for clients that want them.
+
 #### Total Results
 
-Responses for multi-object read requests will include a custom HTTP header, `Total-Results`, that provides the total number of results matched by the request. The actual number of results provided in a given response will be no more than 100.
+Responses for multi-object read requests will include a custom HTTP header, `Total-Results`, that provides the total number of results matched by the request. In the Web API, the actual number of results provided in a given response will be no more than 100.
 
 #### Link Header
 
@@ -326,6 +340,8 @@ While a conditional GET request that returns a `304` should be fast, some client
 In addition to making conditional requests, clients downloading data for entire Zotero libraries should use `?since=` to request only objects that have changed since the last time data was downloaded.
 
 See [Syncing](dev/web_api/v3/syncing) for more information on library and object versioning.
+
+Conditional requests work the same way against the [local API](dev/web_api/v3/local_api), but local responses are already inexpensive to produce, so aggressive caching on the client side is less important. The `?since=` parameter is also supported and is the preferred way to fetch only changed objects from a large local library.
 
 ## Rate Limiting
 
@@ -397,6 +413,8 @@ Several examples of read request URLs and their responses:
   </tbody>
 </table>
 
+The [local API](dev/web_api/v3/local_api) does not currently apply rate limiting.
+
 ## HTTP Status Codes
 
 Successful GET requests will return a `200 OK` status code.
@@ -411,8 +429,11 @@ Passing an `Expect` header, which is unsupported, will result in a `417 Expectat
 
 `429 Too Many Requests` indicates that the client has been [rate-limited](#rate_limiting).
 
+The [local API](dev/web_api/v3/local_api) returns `403 Forbidden` when the local API preference is not enabled and `501 Not Implemented` when a request asks for something it does not support (Atom output, or an API version other than 3 on an endpoint other than `/api/`).
+
 ## Additional API Documentation
 
+-   [Local API](dev/web_api/v3/local_api)
 -   [Write Requests](dev/web_api/v3/write_requests)
 -   [File Uploads](dev/web_api/v3/file_upload)
 -   [Syncing](dev/web_api/v3/syncing)
