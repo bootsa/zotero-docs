@@ -2,6 +2,12 @@
 
 Changes in released versions of Zotero 9.0 are documented on this page. To follow development, see the [commit log on GitHub](https://github.com/zotero/zotero/commits/). More recent changes may be available in a [beta build](beta_builds).
 
+## Changes in 9.0.5 (June 10, 2026)
+
+*Zotero for Windows only*
+
+- Fixed broken Word integration after Microsoft's June 9 Windows security updates (KB5094126)
+
 ## Changes in 9.0.4 (May 22, 2026)
 
 - Fixed broken search/indexing after app had been open for a while
