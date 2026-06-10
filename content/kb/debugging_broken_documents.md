@@ -4,7 +4,7 @@ Follow the steps below for [Microsoft Word](#microsoft_word), [Google Docs](#goo
 
 ## Microsoft Word
 
-<p style="color: red"><strong>June 10, 2026: The June 9 Windows security updates from Microsoft <a href="https://forums.zotero.org/discussion/comment/513866/#Comment_513866" style="color: red; text-decoration-color: red">broke Word integration on Windows</a>. We've fixed the issue in Zotero 9.0.5, available from the <a href="https://www.zotero.org/download/" style="color: red; text-decoration-color: red">download page</a>. You can install 9.0.5 over your existing version. Your Zotero data will not be affected. An in-app update will be available shortly.</strong></p>
+<p style="color: red"><strong>June 10, 2026: The June 9 Windows security updates from Microsoft <a href="https://forums.zotero.org/discussion/comment/513908/#Comment_513908" style="color: red; text-decoration-color: red">broke Word integration on Windows</a>. We've fixed the issue in Zotero 9.0.5, available via Help → "Check for Updates…".</strong></p>
 
 If you get an error trying to use Zotero in a **new, empty document**, see [Word Processor Plugin Troubleshooting](word_processor_plugin_troubleshooting).
 
