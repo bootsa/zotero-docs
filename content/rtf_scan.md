@@ -18,7 +18,7 @@ If you wish a bibliography to appear somewhere other than at the end of the docu
 
 Once you have finished writing, save the document (make sure it's .RTF) and open Zotero. From the Tools menu, select "RTF Scan…". Under Input File, select the document you've just created. In Output File, specify the name and location where you want the new, formatted file to be saved. Click Continue.
 
-![](http://www.zotero.org/static/images/support/rtf_scan.png){ .align-right }
+![](https://www.zotero.org/static/images/support/rtf_scan.png){ .align-right }
 
 The Verify Cited Items screen will tell you which citations were mapped properly and which remain ambiguous. To fix an improperly mapped citation, click the icon to its right and select the correct citation in the dialog that appears. Zotero will provide suggestions for citations it is unsure of. Clicking the icon with the green arrow to the right of the suggestion will map it to that citation. Once all the citations are mapped properly, you can click Continue.
 

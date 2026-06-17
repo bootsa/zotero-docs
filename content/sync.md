@@ -8,7 +8,7 @@ Data syncing merges library items, notes, links, tags, etc. — everything exce
 
 The first step to syncing your Zotero library is to [create a Zotero account](/user/register/) (which is also used for the Zotero Forums). Then, open the Sync pane of the [Zotero preferences](preferences) and enter your login information in the Data Syncing section.
 
-![](http://www.zotero.org/static/images/support/quick_start/small/sync.png){ .align-left width=160 }
+![](https://www.zotero.org/static/images/support/quick_start/small/sync.png){ .align-left width=160 }
 
 By default, Zotero will sync your local data with the Zotero servers whenever changes are made. To disable automatic syncing, uncheck the "Sync automatically" checkbox in this section. You can sync manually at any time by clicking the "Sync with zotero.org" button on the right-hand side of the Zotero toolbar.
 

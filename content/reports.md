@@ -8,7 +8,7 @@ Reports are simple HTML pages that give an overview of the item metadata, notes,
 
 To create a report, right-click (ctrl-click on macOS) an item or a selection of items in the center pane and select "Generate Report from Selected Item(s)…". You can also right-click a collection in the left column and select "Generate Report from Collection".
 
-![](http://www.zotero.org/static/images/support/report_from_items.png)
+![](https://www.zotero.org/static/images/support/report_from_items.png)
 
 ### Sharing and Printing Reports
 
